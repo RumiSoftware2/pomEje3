@@ -1,4 +1,5 @@
 import './PrepareSpace.css'
+import useSound from '../../hooks/useSound.js'
 
 const reminders = [
   { icon: '🧹', text: 'Despeja tu espacio' },
@@ -7,6 +8,7 @@ const reminders = [
 ]
 
 function PrepareSpace({ onConfirm }) {
+  const { reproducir } = useSound()
   return (
     <section className="prepare-space" aria-labelledby="prepare-title">
       <span className="prepare-space__emoji" aria-hidden="true">🏡</span>
@@ -17,7 +19,7 @@ function PrepareSpace({ onConfirm }) {
           <li key={item.text}><span aria-hidden="true">{item.icon}</span><span>{item.text}</span></li>
         ))}
       </ul>
-      <button className="activity-primary" type="button" onClick={onConfirm}>¡Listo!</button>
+      <button className="activity-primary" type="button" onClick={() => { reproducir('tap'); onConfirm() }}>¡Listo!</button>
     </section>
   )
 }

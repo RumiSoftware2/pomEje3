@@ -87,7 +87,7 @@ function ParentSettingsScreen() {
           <p>Versión 0.1.0 · Proyecto académico</p>
           <p>Fundación Universitaria del Área Andina</p>
           <p>Cátedra Pablo Oliveros Marmolejo</p>
-          <p className="settings-note">Las actividades usan voz del dispositivo. Aún no hay pistas de audio propias.</p>
+          <p className="settings-note">La música y los efectos son originales. La voz usa el dispositivo.</p>
         </section>
       </div>
     </ScreenFrame>

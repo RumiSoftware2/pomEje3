@@ -1,6 +1,14 @@
+import { useEffect } from 'react'
 import './CelebrationOverlay.css'
+import useSound from '../../hooks/useSound.js'
 
 function CelebrationOverlay({ message = '¡Lo lograste! ¡Bravo!', onAgain, onContinue }) {
+  const { reproducir } = useSound()
+  useEffect(() => {
+    reproducir('star')
+    const timer = window.setTimeout(() => reproducir('celebration'), 180)
+    return () => window.clearTimeout(timer)
+  }, [reproducir])
   return (
     <section className="celebration" aria-labelledby="celebration-title" role="dialog" aria-modal="true">
       <span className="celebration__stars" aria-hidden="true">✨⭐✨</span>

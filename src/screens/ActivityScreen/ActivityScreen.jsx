@@ -23,7 +23,7 @@ function ActivityScreen() {
   const { completeActivity } = useProgress()
   const { settings } = useSettings()
   const { callar } = useSpeech()
-  const { detenerMusica } = useSound()
+  const { detenerMusica, precargarEfectos, reproducir } = useSound()
   const [stage, setStage] = useState('prepare')
   const [paused, setPaused] = useState(false)
   const [confirmExit, setConfirmExit] = useState(false)
@@ -40,6 +40,10 @@ function ActivityScreen() {
     }
   }, [callar, detenerMusica, paused, stage])
 
+  useEffect(() => {
+    if (stage === 'countdown' || stage === 'active') precargarEfectos()
+  }, [precargarEfectos, stage])
+
   const finishActivity = useCallback(() => {
     if (completedRef.current) return
     completedRef.current = true
@@ -51,13 +55,16 @@ function ActivityScreen() {
   const Activity = activityRegistry[topic.actividad.tipo]
   if (!Activity) return <Navigate to={`/materia/${subject.id}`} replace />
   const data = topic.actividad.datos?.[settings.ageProfile]
+  if (topic.actividad.tipo === 'VideoLesson') return <Activity subject={subject} topic={topic} data={data} />
   const exitToTopic = () => navigate(`/materia/${subject.id}`)
   const requestExit = () => {
+    reproducir('tap')
     pausedBeforeExit.current = paused
     setPaused(true)
     setConfirmExit(true)
   }
   const cancelExit = () => {
+    reproducir('tap')
     setConfirmExit(false)
     setPaused(pausedBeforeExit.current)
   }
@@ -78,7 +85,7 @@ function ActivityScreen() {
           <div><span>{subject.nombre}</span><span aria-hidden="true">›</span><strong>{topic.nombre}</strong></div>
           <div className="activity-screen__controls">
             {stage === 'active' && (
-              <button className="activity-screen__pause" type="button" onClick={() => setPaused((value) => !value)}>
+                <button className="activity-screen__pause" type="button" onClick={() => { reproducir('tap'); setPaused((value) => !value) }}>
                 {paused ? '▶ Seguir' : 'Ⅱ Pausa'}
               </button>
             )}

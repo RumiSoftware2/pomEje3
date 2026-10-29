@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { BrowserRouter, Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import SettingsProvider from './context/SettingsProvider.jsx'
 import ProgressProvider from './context/ProgressProvider.jsx'
@@ -24,12 +24,22 @@ function AppRoutes() {
   const { settings } = useSettings()
   const { shouldRest, acknowledgeRest } = useSessionTimer(settings.breakMinutes)
   const { callar } = useSpeech()
-  const { detenerMusica } = useSound()
+  const { detenerMusica, reproducir } = useSound()
+  const previousPath = useRef(pathname)
 
   useEffect(() => {
     callar()
     detenerMusica()
-  }, [pathname, callar, detenerMusica])
+    if (previousPath.current !== pathname) reproducir('transition')
+    previousPath.current = pathname
+  }, [pathname, callar, detenerMusica, reproducir])
+
+  useEffect(() => {
+    if (shouldRest) {
+      reproducir('rest')
+      detenerMusica()
+    }
+  }, [detenerMusica, reproducir, shouldRest])
 
   return (
     <>

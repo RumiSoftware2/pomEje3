@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "vite build && node scripts/generate-precache.js",
     "lint": "eslint .",
+    "audio:generate": "node scripts/generate-audio.js",
     "preview": "vite preview"
   },
   "dependencies": {

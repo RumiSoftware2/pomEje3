@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import CountdownRing from '../../components/CountdownRing/CountdownRing.jsx'
 import ProgressPath from '../../components/ProgressPath/ProgressPath.jsx'
 import useSpeech from '../../hooks/useSpeech.js'
+import useSound from '../../hooks/useSound.js'
 import './RhythmEcho.css'
 
 const fallbackPatterns = [
@@ -18,12 +19,26 @@ function RhythmEcho({ data, paused, onComplete }) {
   const [turn, setTurn] = useState('nimbo')
   const pattern = patterns[index]
   const text = pattern.texto ?? pattern.palabra ?? pattern.word ?? 'Escucha el ritmo'
-  const beats = pattern.tiempos ?? pattern.secuencia ?? pattern.beats ?? ['corto', 'corto', 'largo']
+  const beats = useMemo(() => pattern.tiempos ?? pattern.secuencia ?? pattern.beats ?? ['corto', 'corto', 'largo'], [pattern])
   const { hablar } = useSpeech()
+  const { reproducir } = useSound()
+  const beatLength = Number(data?.tempo ?? pattern.tempo ?? 1.1)
+  const patternSeconds = beats.reduce((sum, beat) => sum + (beat === 'largo' || beat === 'long' ? beatLength : beatLength * 0.58), 0)
 
   useEffect(() => {
     hablar(turn === 'nimbo' ? '¡Escucha!' : '¡Ahora tú!', 'es-CO')
   }, [hablar, index, turn])
+
+  useEffect(() => {
+    if (paused) return undefined
+    let offset = 350
+    const timers = beats.map((beat) => {
+      const timeout = window.setTimeout(() => reproducir('tap'), offset)
+      offset += (beat === 'largo' || beat === 'long' ? beatLength : beatLength * 0.58) * 1000
+      return timeout
+    })
+    return () => timers.forEach((timer) => window.clearTimeout(timer))
+  }, [beatLength, beats, index, paused, reproducir, turn])
 
   const next = () => {
     if (turn === 'nimbo') setTurn('tu-turno')
@@ -47,7 +62,7 @@ function RhythmEcho({ data, paused, onComplete }) {
         ))}
       </div>
       <p className="rhythm-echo__hint">{turn === 'nimbo' ? 'Escucha y mira las palmas.' : 'Aplaude o pisa al ritmo.'}</p>
-      <CountdownRing key={`${index}-${turn}`} seconds={Math.max(4, beats.length * (turn === 'nimbo' ? 1.5 : 1.1))} total={Math.max(4, beats.length * 1.5)} paused={paused} onComplete={next} />
+      <CountdownRing key={`${index}-${turn}`} seconds={Math.max(4, patternSeconds + 0.5)} total={Math.max(4, patternSeconds + 0.5)} paused={paused} onComplete={next} />
     </section>
   )
 }

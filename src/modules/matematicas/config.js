@@ -54,6 +54,23 @@ const matematicas = {
         },
       },
     },
+    {
+      id: 'video-especial', nombre: 'Video especial', icono: '🎬',
+      introduccion: [{ texto: '¡Mira el video especial!', emoji: '📺', voz: '¡Mira el video especial!' }],
+      actividad: {
+        tipo: 'VideoLesson',
+        datos: {
+          pequenos: {
+            titulo: 'Video especial de Matemáticas',
+            url: 'https://www.youtube.com/embed/QkXQ6uSKbwA?si=f24rSCLMEK1vopQC',
+          },
+          grandes: {
+            titulo: 'Video especial de Matemáticas',
+            url: 'https://www.youtube.com/embed/QkXQ6uSKbwA?si=f24rSCLMEK1vopQC',
+          },
+        },
+      },
+    },
   ],
 }
 

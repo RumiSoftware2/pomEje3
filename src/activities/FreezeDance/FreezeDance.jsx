@@ -13,7 +13,7 @@ function FreezeDance({ data, paused, onComplete }) {
   const [saidFreeze, setSaidFreeze] = useState(-1)
   const [isFrozen, setIsFrozen] = useState(false)
   const { hablar } = useSpeech()
-  const { reproducirMusica, detenerMusica } = useSound()
+  const { reproducir, reproducirMusica, detenerMusica } = useSound()
   const elapsed = duration - secondsLeft
   const finish = useCallback(onComplete, [onComplete])
   const { secondsLeft, start, pause } = useCountdown(duration, finish)
@@ -37,7 +37,8 @@ function FreezeDance({ data, paused, onComplete }) {
     if (nextFreeze === -1) return
     setSaidFreeze(nextFreeze)
     hablar('¡Congelados!', 'es-CO')
-  }, [elapsed, freezeTimes, hablar, saidFreeze])
+    reproducir('ice')
+  }, [elapsed, freezeTimes, hablar, reproducir, saidFreeze])
 
   useEffect(() => {
     if (saidFreeze < 0) return undefined

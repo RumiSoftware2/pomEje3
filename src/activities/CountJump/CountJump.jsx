@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react'
 import ProgressPath from '../../components/ProgressPath/ProgressPath.jsx'
 import useSpeech from '../../hooks/useSpeech.js'
 import './CountJump.css'
+import useSound from '../../hooks/useSound.js'
 
 const fallbackRounds = [
   { objetivo: 3, movimiento: 'aplausos', emoji: '👏', frase: '¡Aplaude 3 veces!' },
@@ -13,6 +14,7 @@ function CountJump({ data, countMode = 'nimbo', paused, onComplete }) {
   const [count, setCount] = useState(0)
   const round = rounds[roundIndex]
   const { hablar } = useSpeech()
+  const { reproducir } = useSound()
 
   const advance = useCallback(() => {
     if (roundIndex + 1 >= rounds.length) onComplete()
@@ -26,8 +28,11 @@ function CountJump({ data, countMode = 'nimbo', paused, onComplete }) {
     const next = count + 1
     setCount(next)
     hablar(`${next}`, 'es-CO')
-    if (next >= round.objetivo) window.setTimeout(advance, 650)
-  }, [advance, count, hablar, round.objetivo])
+    if (next >= round.objetivo) {
+      reproducir('success-small')
+      window.setTimeout(advance, 650)
+    }
+  }, [advance, count, hablar, reproducir, round.objetivo])
 
   useEffect(() => {
     if (countMode !== 'nimbo' || paused || count >= round.objetivo) return undefined

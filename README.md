@@ -16,6 +16,8 @@ npm run build
 npm run preview
 ```
 
+Para recrear los WAV originales, ejecuta `npm run audio:generate`.
+
 La compilación prepara la aplicación instalable y genera su lista de archivos para usarla sin conexión. La primera carga necesita conexión; después, el navegador conserva la portada, los módulos y los recursos compilados. El servicio de voz usa las voces disponibles en el dispositivo.
 
 ## Estructura
@@ -31,7 +33,7 @@ La compilación prepara la aplicación instalable y genera su lista de archivos 
 
 ## Contenido actual
 
-El registro incluye seis asignaturas y doce temas, con datos para los perfiles Pequeños y Grandes. Cada actividad comienza con una preparación segura, permite pausar o salir y entrega una estrella al completarse. Los ajustes y el progreso se guardan en el dispositivo bajo el prefijo `miniaventuras:`.
+El registro incluye seis asignaturas y trece temas, con datos para los perfiles Pequeños y Grandes. Matemáticas incluye un tema especial con un video incrustado de YouTube. Las seis plantillas corporales comienzan con una preparación segura, permiten pausar o salir y entregan una estrella al completarse. Los ajustes y el progreso se guardan en el dispositivo bajo el prefijo `miniaventuras:`.
 
 ## Reglas para continuar
 

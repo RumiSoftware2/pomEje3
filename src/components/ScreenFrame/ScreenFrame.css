@@ -1,0 +1,6 @@
+.screen-frame { margin: 0 auto; max-width: 1240px; min-height: 100vh; padding: 0 0 50px; width: 100%; }
+.screen-frame__main { margin: 24px auto 0; max-width: 1040px; }
+.screen-frame__heading { margin: 30px 0 29px; }
+.screen-frame__heading h1 { color: var(--color-ciruela); font-family: 'Trebuchet MS', sans-serif; font-size: clamp(34px, 5vw, 52px); letter-spacing: -1.7px; line-height: 1.15; margin: 0 0 10px; }
+.screen-frame__heading p { color: #756b7b; font-size: 18px; line-height: 1.55; margin: 0; }
+@media (max-width: 480px) { .screen-frame__heading { margin: 23px 0; } .screen-frame__heading p { font-size: 20px; } }

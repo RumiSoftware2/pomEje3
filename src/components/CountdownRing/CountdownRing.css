@@ -1,0 +1,5 @@
+.countdown-ring { align-items: center; aspect-ratio: 1; background: conic-gradient(var(--color-azul-sombra) calc(var(--ring-progress) * 1turn), #e9e3eb 0); border-radius: 50%; display: flex; flex-direction: column; height: 122px; justify-content: center; position: relative; }
+.countdown-ring::before { background: #fff; border-radius: 50%; content: ''; inset: 9px; position: absolute; }
+.countdown-ring span, .countdown-ring small { position: relative; }
+.countdown-ring span { color: var(--color-ciruela); font-size: 36px; font-weight: 800; }
+.countdown-ring small { color: #756b7b; font-size: 13px; }

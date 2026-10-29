@@ -1,0 +1,10 @@
+.intro-screen .screen-frame__main { max-width: 760px; }
+.intro-card { align-items: center; background: color-mix(in srgb, var(--subject-color) 34%, white); border: 3px solid var(--subject-shadow); border-radius: 34px; display: flex; flex-direction: column; gap: 14px; min-height: 440px; padding: 26px; text-align: center; }
+.intro-card .mascot { width: 205px; }
+.intro-card__emoji { font-size: 56px; line-height: 1; }
+.intro-card__phrase { color: var(--color-ciruela); font-size: clamp(24px, 4vw, 33px); font-weight: 700; margin: 0; }
+.intro-card__translation { color: #6e6374; font-size: 18px; margin: -8px 0 0; }
+.intro-card__listen { background: transparent; border: 0; border-radius: 14px; cursor: pointer; font: inherit; font-size: 16px; font-weight: 600; min-height: 88px; min-width: 88px; padding: 8px 15px; }
+.intro-card__listen:focus-visible { outline: 4px solid var(--color-ciruela); outline-offset: 2px; }
+.intro-card .big-button { margin-top: 4px; }
+@media (max-width: 480px) { .intro-card { min-height: 400px; } .intro-card .mascot { width: 170px; } }

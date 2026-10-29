@@ -1,0 +1,8 @@
+.progress-path { align-items: center; display: flex; justify-content: center; list-style: none; margin: 0 auto; max-width: 600px; padding: 0; }
+.progress-path li { align-items: center; display: flex; flex: 1 1 0; justify-content: center; position: relative; }
+.progress-path li:not(:last-child)::after { background: #e7dfea; content: ''; height: 5px; left: 50%; position: absolute; right: -50%; top: calc(50% - 2px); }
+.progress-path__dot { align-items: center; background: #fff; border: 3px solid #dfd5e1; border-radius: 50%; color: #756b7b; display: flex; font-size: 15px; font-weight: 700; height: 42px; justify-content: center; position: relative; width: 42px; z-index: 1; }
+.progress-path .is-complete .progress-path__dot { background: var(--color-menta); border-color: var(--color-menta-sombra); }
+.progress-path .is-current .progress-path__dot { animation: progress-pulse 1.2s ease-in-out infinite; background: var(--color-azul); border-color: var(--color-azul-sombra); color: var(--color-ciruela); }
+@keyframes progress-pulse { 50% { transform: scale(1.08); } }
+@media (prefers-reduced-motion: reduce) { .progress-path .is-current .progress-path__dot { animation: none; } }

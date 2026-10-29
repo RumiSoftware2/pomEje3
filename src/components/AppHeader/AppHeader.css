@@ -1,0 +1,9 @@
+.app-header { align-items: center; display: flex; justify-content: space-between; padding: 22px 0; }
+.app-header__brand { align-items: center; color: var(--color-ciruela); display: inline-flex; gap: 13px; text-decoration: none; }
+.app-header__brand img { height: auto; width: 142px; }
+.app-header__brand > span { background: #e5dce2; height: 34px; width: 1px; }
+.app-header__brand strong { font-size: 16px; }
+.app-header__actions { align-items: center; display: flex; gap: 12px; }
+.app-header__adult { align-items: center; border: 1px solid #eee4e2; border-radius: 50%; color: var(--color-ciruela); display: inline-flex; font-size: 22px; height: 88px; justify-content: center; text-decoration: none; width: 88px; }
+.app-header__adult:focus-visible, .app-header__brand:focus-visible { outline: 4px solid var(--color-ciruela); outline-offset: 4px; }
+@media (max-width: 480px) { .app-header { padding: 16px 0; } .app-header__brand img { width: 93px; } .app-header__brand { gap: 8px; } .app-header__brand strong { font-size: 14px; } }

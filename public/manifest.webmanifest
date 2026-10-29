@@ -1,0 +1,19 @@
+{
+  "name": "Miniaventuras · Área Andina",
+  "short_name": "Miniaventuras",
+  "description": "Muévete, descubre y aprende en familia.",
+  "lang": "es",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#FFFBF5",
+  "theme_color": "#FFFBF5",
+  "icons": [
+    {
+      "src": "/app-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

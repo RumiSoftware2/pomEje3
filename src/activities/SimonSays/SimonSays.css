@@ -1,0 +1,4 @@
+.simon-says { align-items: center; display: flex; flex-direction: column; gap: 20px; text-align: center; }
+.simon-says__icon { font-size: 88px; line-height: 1; }
+.simon-says__instruction { color: var(--color-ciruela); font-size: clamp(26px, 4vw, 37px); font-weight: 700; margin: 0; }
+.simon-says__translation { color: #5B4B6B; font-size: 20px; margin: -12px 0 0; }

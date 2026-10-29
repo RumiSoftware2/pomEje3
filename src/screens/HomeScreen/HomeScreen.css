@@ -1,0 +1,8 @@
+.home-route { max-width: 1440px; }
+.home-route .home { margin: 0 auto; max-width: 1190px; }
+.home-route .welcome { min-height: 410px; }
+.home-route .welcome__description { max-width: 450px; }
+.home-route .welcome__copy .big-button { margin-top: 3px; }
+.home-route .institution { margin-bottom: 0; }
+.home-route .team { padding-top: 52px; }
+@media (max-width: 640px) { .home-route .welcome { min-height: unset; } .home-route .institution { margin-inline: 0; } }

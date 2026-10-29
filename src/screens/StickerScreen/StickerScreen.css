@@ -1,0 +1,10 @@
+.sticker-grid { display: grid; gap: 16px; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.sticker-card { align-items: center; background: white; border: 2px solid #eee5eb; border-radius: 22px; display: flex; flex-direction: column; gap: 11px; justify-content: center; min-height: 155px; padding: 15px; text-align: center; }
+.sticker-card__emoji { font-size: 55px; line-height: 1; }
+.sticker-card strong { color: var(--color-ciruela); font-size: 18px; }
+.sticker-card.is-locked { background: #f7f5f7; }
+.sticker-card.is-locked .sticker-card__emoji { filter: grayscale(1); opacity: .48; }
+.sticker-card.is-locked strong { color: #756b7b; }
+.sticker-card.is-unlocked { background: #fffaf0; border-color: #f1d98b; }
+@media (max-width: 768px) { .sticker-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 480px) { .sticker-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }

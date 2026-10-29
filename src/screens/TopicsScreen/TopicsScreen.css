@@ -1,0 +1,10 @@
+.topics-screen .screen-frame__heading { border-left: 8px solid var(--subject-shadow); padding-left: 22px; }
+.topic-grid { display: grid; gap: 20px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.topic-card { align-items: center; background: color-mix(in srgb, var(--subject-color) 40%, white); border: 3px solid var(--subject-shadow); border-radius: 28px; box-shadow: 0 7px 0 var(--subject-shadow); color: var(--color-ciruela); display: flex; flex-direction: column; gap: 13px; justify-content: center; min-height: 220px; padding: 20px; text-decoration: none; transition: transform 160ms ease; }
+.topic-card:hover { transform: translateY(4px); }
+.topic-card:focus-visible { outline: 4px solid var(--color-ciruela); outline-offset: 4px; }
+.topic-card__icon { font-size: 66px; }
+.topic-card strong { font-size: 22px; }
+.topic-card__meta { background: #fff; border-radius: 999px; font-size: 20px; padding: 9px 14px; }
+@media (max-width: 768px) { .topic-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 480px) { .topic-card { min-height: 175px; } .topic-card__icon { font-size: 52px; } .topic-card strong { font-size: 20px; } }

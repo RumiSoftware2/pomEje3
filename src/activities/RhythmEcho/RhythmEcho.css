@@ -1,0 +1,9 @@
+.rhythm-echo { align-items: center; display: flex; flex-direction: column; gap: 17px; text-align: center; }
+.rhythm-echo__turn { color: #94647a; font-size: 21px; font-weight: 700; margin: 0; }
+.rhythm-echo h2 { font-size: clamp(25px, 4vw, 34px); margin: 0; }
+.rhythm-echo__beats { align-items: center; display: flex; gap: 14px; min-height: 68px; }
+.rhythm-echo__beat { align-items: center; animation: rhythm-pulse 1.5s ease-in-out infinite; animation-delay: calc(var(--beat-index) * .24s); background: var(--color-amarillo); border: 3px solid var(--color-amarillo-sombra); border-radius: 50%; color: var(--color-ciruela); display: inline-flex; font-size: 22px; font-weight: 800; height: 56px; justify-content: center; width: 56px; }
+.rhythm-echo__beat--largo, .rhythm-echo__beat--long { border-radius: 999px; width: 86px; }
+.rhythm-echo__hint { color: #5B4B6B; font-size: 20px; margin: 0; }
+@keyframes rhythm-pulse { 0%, 100% { transform: scale(1); } 35% { transform: scale(1.12); } }
+@media (prefers-reduced-motion: reduce) { .rhythm-echo__beat { animation: none; } }

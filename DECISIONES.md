@@ -1,8 +1,10 @@
 # Decisiones del proyecto
 
-- Se conserva React y JavaScript, con CSS, como pidió el equipo. No se instalaron dependencias nuevas para esta etapa.
-- La implementación comienza por la portada y los componentes base de la Fase 1. Las asignaturas, navegación y actividades se harán en sus fases posteriores.
-- El logo se importa desde `src/assets` para que Vite lo incluya en la compilación de producción.
-- Se utiliza una tipografía de sistema con alternativas redondeadas para evitar fuentes externas o dependencias adicionales.
-- El contador de estrellas inicia en cero como componente visual; el progreso local se implementará con la Fase 2.
-- El botón principal lleva a la sección de presentación del equipo mientras se construye la navegación de actividades.
+- El equipo pidió JavaScript y CSS. No se usa TypeScript.
+- Se utiliza React Router para las rutas descritas en las guías.
+- Las asignaturas se cargan desde `modulesRegistry`; cada materia aporta su propio `config.js`.
+- Los ajustes, las estrellas, los temas completados y las pegatinas se almacenan solo en el dispositivo.
+- La voz usa Web Speech API con subtítulos visibles. Aún no se recibieron archivos de música ni efectos.
+- La tipografía usa fuentes de sistema para evitar dependencias y solicitudes a fuentes externas.
+- El servicio de trabajo sin conexión precarga la compilación de Vite y responde las rutas internas desde la portada.
+- La revisión manual en Edge no se realizó porque Computer Use no obtuvo acceso al navegador. La compilación y ESLint sí se ejecutaron.

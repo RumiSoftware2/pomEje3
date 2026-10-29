@@ -1,0 +1,5 @@
+.move-like { align-items: center; display: flex; flex-direction: column; gap: 18px; text-align: center; }
+.move-like__emoji { font-size: 92px; line-height: 1; }
+.move-like h2 { font-size: clamp(25px, 4vw, 35px); margin: 0; }
+.move-like p { color: #5B4B6B; font-size: 20px; margin: 0; }
+.move-like h2 + p { margin-top: -10px; }

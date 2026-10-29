@@ -1,51 +1,13 @@
-.screen-layout {
-  min-height: 100vh;
-  overflow: hidden;
-  position: relative;
-  background: var(--color-crema);
-}
-
-.screen-layout__content {
-  isolation: isolate;
-  margin: 0 auto;
-  max-width: 1440px;
-  min-height: 100vh;
-  padding: 0 clamp(24px, 7.2vw, 112px);
-  position: relative;
-}
-
-.screen-layout__decor {
-  border-radius: 50%;
-  filter: blur(1px);
-  pointer-events: none;
-  position: absolute;
-}
-
-.screen-layout__decor--left {
-  background: #f9e6d7;
-  height: 230px;
-  left: -145px;
-  opacity: 0.43;
-  top: 305px;
-  width: 230px;
-}
-
-.screen-layout__decor--right {
-  background: #e1eafa;
-  height: 280px;
-  opacity: 0.55;
-  right: -170px;
-  top: 80px;
-  width: 280px;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .screen-layout *,
-  .screen-layout *::before,
-  .screen-layout *::after {
-    scroll-behavior: auto !important;
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-}
+.screen-layout { background: var(--color-crema); min-height: 100vh; overflow: hidden; position: relative; }
+.screen-layout__content { isolation: isolate; margin: 0 auto; max-width: 1440px; min-height: 100vh; padding: 0 clamp(24px, 7.2vw, 112px); position: relative; z-index: 1; }
+.screen-layout__decor { animation: float 8s ease-in-out infinite; border-radius: 50%; pointer-events: none; position: absolute; z-index: 0; }
+.screen-layout__decor--left { background: #f9e6d7; height: 230px; left: -145px; opacity: .55; top: 305px; width: 230px; }
+.screen-layout__decor--right { animation-delay: -3s; background: #e1eafa; height: 280px; opacity: .68; right: -170px; top: 80px; width: 280px; }
+.screen-layout__decor--star-one, .screen-layout__decor--star-two, .screen-layout__decor--flower { animation-delay: -1s; background: transparent; border-radius: 0; color: #d5b45b; font-size: 30px; height: auto; width: auto; }
+.screen-layout__decor--star-one { left: 8%; top: 19%; }
+.screen-layout__decor--star-two { color: #c69ab0; font-size: 24px; right: 12%; top: 48%; }
+.screen-layout__decor--flower { color: #abd2b3; font-size: 28px; left: 18%; top: 75%; }
+.screen-layout__decor--bubble-one { animation-delay: -2s; background: #ffe9c8; height: 34px; left: 51%; opacity: .7; top: 13%; width: 34px; }
+.screen-layout__decor--bubble-two { animation-delay: -4s; background: #d9cceb; height: 23px; right: 26%; opacity: .7; top: 80%; width: 23px; }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+@media (prefers-reduced-motion: reduce) { .screen-layout__decor { animation: none; } }

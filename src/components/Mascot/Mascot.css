@@ -1,3 +1,15 @@
 .mascot { animation: mascot-float 4s ease-in-out infinite; display: block; filter: drop-shadow(0 16px 18px rgb(91 75 107 / 8%)); height: auto; max-width: 100%; width: 310px; }
+.mascot--pequeno { width: 180px; }
+.mascot__bubble rect { fill: #fff; stroke: #e8dfea; stroke-width: 2; }
+.mascot__bubble text { fill: #5B4B6B; font-family: 'Trebuchet MS', sans-serif; font-size: 12px; font-weight: 700; text-anchor: middle; }
+.mascot__thought { fill: #5B4B6B; font-size: 29px; font-weight: 800; }
+.mascot--hablando .mascot__mouth { animation: mascot-talk 250ms ease-in-out infinite alternate; transform-origin: center; }
+.mascot--pensando .mascot__thought { animation: mascot-thought 1s ease-in-out infinite alternate; }
+.mascot--celebrando { animation: mascot-celebrate 650ms ease-in-out infinite alternate; }
+.mascot--durmiendo { animation: mascot-sleep 4s ease-in-out infinite; }
 @keyframes mascot-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
-@media (prefers-reduced-motion: reduce) { .mascot { animation: none; } }
+@keyframes mascot-talk { from { transform: scaleY(.7); } to { transform: scaleY(1.25); } }
+@keyframes mascot-thought { to { opacity: .45; transform: translateY(-3px); } }
+@keyframes mascot-celebrate { to { transform: translateY(-8px) rotate(2deg); } }
+@keyframes mascot-sleep { 50% { transform: translateY(2px) scaleY(.99); } }
+@media (prefers-reduced-motion: reduce) { .mascot { animation: none; } .mascot--hablando .mascot__mouth, .mascot--pensando .mascot__thought { animation: none; } }

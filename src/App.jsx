@@ -1,94 +1,71 @@
-import ScreenLayout from './components/ScreenLayout/ScreenLayout.jsx'
-import Mascot from './components/Mascot/Mascot.jsx'
-import BigButton from './components/BigButton/BigButton.jsx'
-import StarCounter from './components/StarCounter/StarCounter.jsx'
-import areaAndinaLogo from './assets/logo-fundacionUniversitariaAreaAndina.png'
+import { useEffect } from 'react'
+import { BrowserRouter, Navigate, Route, Routes, useLocation } from 'react-router-dom'
+import SettingsProvider from './context/SettingsProvider.jsx'
+import ProgressProvider from './context/ProgressProvider.jsx'
+import HomeScreen from './screens/HomeScreen/HomeScreen.jsx'
+import SubjectsScreen from './screens/SubjectsScreen/SubjectsScreen.jsx'
+import TopicsScreen from './screens/TopicsScreen/TopicsScreen.jsx'
+import TopicIntroScreen from './screens/TopicIntroScreen/TopicIntroScreen.jsx'
+import ActivityScreen from './screens/ActivityScreen/ActivityScreen.jsx'
+import ParentAreaScreen from './screens/ParentAreaScreen/ParentAreaScreen.jsx'
+import StickerScreen from './screens/StickerScreen/StickerScreen.jsx'
+import useSessionTimer from './hooks/useSessionTimer.js'
+import useSpeech from './hooks/useSpeech.js'
+import useSound from './hooks/useSound.js'
+import useSettings from './hooks/useSettings.js'
+import modulesRegistry from './modules/modulesRegistry.js'
+import validateModules from './modules/validateModules.js'
 import './App.css'
 
-const team = [
-  'Laura Vanessa Martínez',
-  'Yuri Paola Mosquera',
-  'Jhon Edwin Nasequia',
-  'Sebastian Mendoza Duitama',
-  'María Graciela Morales Pabón',
-]
+validateModules(modulesRegistry)
+
+function AppRoutes() {
+  const { pathname } = useLocation()
+  const { settings } = useSettings()
+  const { shouldRest, acknowledgeRest } = useSessionTimer(settings.breakMinutes)
+  const { callar } = useSpeech()
+  const { detenerMusica } = useSound()
+
+  useEffect(() => {
+    callar()
+    detenerMusica()
+  }, [pathname, callar, detenerMusica])
+
+  return (
+    <>
+      <Routes>
+        <Route path="/" element={<HomeScreen />} />
+        <Route path="/materias" element={<SubjectsScreen />} />
+        <Route path="/materia/:id" element={<TopicsScreen />} />
+        <Route path="/materia/:id/tema/:tema" element={<TopicIntroScreen />} />
+        <Route path="/materia/:id/tema/:tema/actividad" element={<ActivityScreen />} />
+        <Route path="/padres/*" element={<ParentAreaScreen />} />
+        <Route path="/pegatinas" element={<StickerScreen />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+      {shouldRest && (
+        <div className="rest-overlay" role="dialog" aria-modal="true" aria-labelledby="rest-title">
+          <div className="rest-overlay__card">
+            <span aria-hidden="true">💧</span>
+            <h2 id="rest-title">¡Hora de tomar agua!</h2>
+            <p>Descansemos un poquito juntos.</p>
+            <button type="button" onClick={acknowledgeRest}>Ya descansé</button>
+          </div>
+        </div>
+      )}
+    </>
+  )
+}
 
 function App() {
   return (
-    <ScreenLayout>
-      <header className="topbar">
-        <a className="brand" href="#inicio" aria-label="Inicio, Miniaventuras">
-          <img
-            className="brand__logo"
-            src={areaAndinaLogo}
-            alt="Fundación Universitaria del Área Andina"
-          />
-          <span className="brand__divider" aria-hidden="true" />
-          <span className="brand__name">Miniaventuras</span>
-        </a>
-        <StarCounter total={0} />
-      </header>
-
-      <main id="inicio" className="home">
-        <section className="welcome" aria-labelledby="welcome-title">
-          <div className="welcome__copy">
-            <span className="eyebrow"><span aria-hidden="true">✦</span> Aprendemos jugando</span>
-            <h1 id="welcome-title">Pequeños pasos,<br /><span>grandes aventuras</span></h1>
-            <p className="welcome__description">
-              Un espacio para moverse, descubrir y aprender en familia.
-            </p>
-            <BigButton icon="▶" onClick={() => document.getElementById('equipo')?.scrollIntoView({ behavior: 'smooth' })}>
-              ¡Comencemos!
-            </BigButton>
-            <p className="welcome__note">Una aventura nueva te espera</p>
-          </div>
-          <div className="welcome__art" aria-label="Nimbo, una nube amiga" role="img">
-            <span className="art-spark art-spark--one" aria-hidden="true">✦</span>
-            <span className="art-spark art-spark--two" aria-hidden="true">✧</span>
-            <span className="art-cloud" aria-hidden="true" />
-            <Mascot />
-            <span className="art-caption">¡Hola, exploradores!</span>
-          </div>
-          <span className="welcome__index" aria-hidden="true">01 <i /> 03</span>
-        </section>
-
-        <section className="institution" aria-label="Información académica">
-          <div className="institution__mark" aria-hidden="true">A</div>
-          <div>
-            <p className="institution__name">Fundación Universitaria del Área Andina</p>
-            <p className="institution__detail">Cátedra Pablo Oliveros Marmolejo</p>
-          </div>
-          <span className="institution__tag">Proyecto académico</span>
-        </section>
-
-        <section id="equipo" className="team" aria-labelledby="team-title">
-          <div className="team__heading">
-            <div>
-              <p className="section-kicker">Detrás de esta aventura</p>
-              <h2 id="team-title">Nuestro equipo</h2>
-            </div>
-            <span className="team__decoration" aria-hidden="true">✳</span>
-          </div>
-          <ul className="team__list">
-            {team.map((member, index) => (
-              <li className="team-card" key={member}>
-                <span className={`team-card__avatar team-card__avatar--${index + 1}`} aria-hidden="true">
-                  {member.split(' ').slice(0, 2).map((part) => part[0]).join('')}
-                </span>
-                <span className="team-card__name">{member}</span>
-                <span className="team-card__spark" aria-hidden="true">✦</span>
-              </li>
-            ))}
-          </ul>
-        </section>
-      </main>
-
-      <footer className="footer">
-        <span>Hecho con cariño para aprender y crecer</span>
-        <span className="footer__heart" aria-hidden="true">♥</span>
-        <span>Área Andina · Cátedra Pablo Oliveros Marmolejo</span>
-      </footer>
-    </ScreenLayout>
+    <BrowserRouter>
+      <SettingsProvider>
+        <ProgressProvider>
+          <AppRoutes />
+        </ProgressProvider>
+      </SettingsProvider>
+    </BrowserRouter>
   )
 }
 

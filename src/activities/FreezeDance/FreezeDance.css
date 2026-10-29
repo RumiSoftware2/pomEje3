@@ -1,0 +1,13 @@
+.freeze-dance { align-items: center; display: flex; flex-direction: column; gap: 20px; }
+.freeze-dance__scene { align-items: center; background: #fff4dc; border: 3px solid #f1d58c; border-radius: 32px; display: flex; flex-direction: column; justify-content: center; min-height: 250px; transition: background-color 700ms ease; width: min(100%, 570px); }
+.freeze-dance__scene > span { animation: dance-sway 1.2s ease-in-out infinite alternate; font-size: 100px; line-height: 1.1; }
+.freeze-dance__scene p { font-size: 26px; font-weight: 700; margin: 8px 0 0; }
+.freeze-dance.is-frozen .freeze-dance__scene { background: #e5f3fc; border-color: #b8d9ee; }
+.freeze-dance.is-frozen .freeze-dance__scene > span { animation: none; }
+.freeze-dance__status { align-items: center; display: flex; gap: 23px; }
+.freeze-dance__status p { color: #5B4B6B; font-size: 20px; margin: 0; }
+.freeze-dance__timer { align-items: center; aspect-ratio: 1; background: #fff; border: 7px solid var(--color-lila); border-radius: 50%; display: flex; flex-direction: column; height: 90px; justify-content: center; }
+.freeze-dance__timer strong { font-size: 27px; }
+.freeze-dance__timer span { color: #5B4B6B; font-size: 15px; }
+@keyframes dance-sway { from { transform: rotate(-5deg); } to { transform: rotate(5deg); } }
+@media (prefers-reduced-motion: reduce) { .freeze-dance__scene > span { animation: none; } }

@@ -3,6 +3,26 @@ import useSettings from './useSettings.js'
 
 const SPANISH_VOICES = ['es-CO', 'es-419', 'es-MX', 'es-US', 'es-ES']
 
+function normalizeLanguage(language = '') {
+  return language.replaceAll('_', '-').toLowerCase()
+}
+
+function selectVoice(voices, language) {
+  const requestedLanguage = normalizeLanguage(language)
+  const preferredLanguages = requestedLanguage.startsWith('en')
+    ? ['en-US', 'en']
+    : SPANISH_VOICES
+
+  for (const preferredLanguage of preferredLanguages) {
+    const normalizedPreferred = normalizeLanguage(preferredLanguage)
+    const exactMatch = voices.find((voice) => normalizeLanguage(voice.lang) === normalizedPreferred)
+    if (exactMatch) return exactMatch
+  }
+
+  const languagePrefix = requestedLanguage.split('-')[0]
+  return voices.find((voice) => normalizeLanguage(voice.lang).split('-')[0] === languagePrefix)
+}
+
 export default function useSpeech() {
   const { settings } = useSettings()
   const [estaHablando, setEstaHablando] = useState(false)
@@ -13,7 +33,7 @@ export default function useSpeech() {
   useEffect(() => {
     if (!supported) return undefined
     const synth = window.speechSynthesis
-    const update = () => setHayVoz(synth.getVoices().length > 0)
+    const update = () => setHayVoz(true)
     update()
     synth.addEventListener('voiceschanged', update)
     return () => synth.removeEventListener('voiceschanged', update)
@@ -28,19 +48,13 @@ export default function useSpeech() {
     completionRef.current = alTerminar
     if (!settings.voiceEnabled || !('speechSynthesis' in window)) return false
     const synth = window.speechSynthesis
-    const utterance = new SpeechSynthesisUtterance(texto)
+    const utterance = new window.SpeechSynthesisUtterance(texto)
     const voices = synth.getVoices()
-    if (voices.length === 0) {
-      setHayVoz(false)
-      return false
-    }
-    const preferred = idioma.startsWith('en')
-      ? ['en-US']
-      : SPANISH_VOICES
-    const selectedVoice = preferred.map((language) => voices.find((voice) => voice.lang.toLowerCase() === language.toLowerCase())).find(Boolean)
-    if (!selectedVoice) return false
-    utterance.voice = selectedVoice
-    utterance.lang = selectedVoice.lang
+    const selectedVoice = selectVoice(voices, idioma)
+    // Some mobile browsers load their voices late or only expose a system default.
+    // Leaving voice unset lets the device choose its default instead of silencing Nimbo.
+    if (selectedVoice) utterance.voice = selectedVoice
+    utterance.lang = selectedVoice?.lang ?? idioma
     utterance.rate = 0.9
     utterance.pitch = 1.1
     utterance.onstart = () => setEstaHablando(true)
@@ -48,8 +62,13 @@ export default function useSpeech() {
       setEstaHablando(false)
       completionRef.current?.()
     }
-    utterance.onerror = () => setEstaHablando(false)
-    synth.cancel()
+    utterance.onerror = () => {
+      setEstaHablando(false)
+      setHayVoz(false)
+    }
+    // Avoid cancel() on the first utterance: some mobile speech engines can
+    // discard the next speak() call when cancel is invoked on an idle queue.
+    if (synth.speaking || synth.pending) synth.cancel()
     synth.speak(utterance)
     return true
   }, [settings.voiceEnabled])

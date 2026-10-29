@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+:root {
+  font-family: 'DM Sans', 'Segoe UI', sans-serif;
+  color: #5B4B6B;
+  background: #FFFBF5;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  --color-crema: #FFFBF5;
+  --color-ciruela: #5B4B6B;
+  --color-rosa: #FFC8DD;
+  --color-rosa-sombra: #F2A0BE;
+  --color-lila: #CDB4DB;
+  --color-lila-sombra: #A98AC2;
+  --color-azul: #BDE0FE;
+  --color-azul-sombra: #8EC3EE;
+  --color-menta: #B9FBC0;
+  --color-menta-sombra: #86E08F;
+  --color-amarillo: #FFF1A8;
+  --color-amarillo-sombra: #F0D96B;
+  --color-durazno: #FFD6A5;
+  --color-durazno-sombra: #EDB77A;
+  --color-dorado: #FFE08A;
+  --color-blanco: #FFFFFF;
+}
+
+* { box-sizing: border-box; }
+html { min-width: 320px; scroll-behavior: smooth; }
+body { margin: 0; min-width: 320px; min-height: 100vh; }
+button, a { -webkit-tap-highlight-color: transparent; }
+button { color: inherit; }
+::selection { background: #FFC8DD; color: #5B4B6B; }

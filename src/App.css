@@ -1,0 +1,83 @@
+.topbar { align-items: center; display: flex; justify-content: space-between; padding: 25px 0; }
+.brand { align-items: center; color: inherit; display: inline-flex; gap: 15px; text-decoration: none; }
+.brand__logo { display: block; height: auto; object-fit: contain; width: 148px; }
+.brand__divider { background: #e5dce2; height: 37px; width: 1px; }
+.brand__name { color: var(--color-ciruela); font-family: 'Trebuchet MS', sans-serif; font-size: 17px; font-weight: 800; letter-spacing: -0.5px; }
+.home { margin: 0 auto; max-width: 1190px; }
+.welcome { align-items: center; display: grid; grid-template-columns: 1.12fr .88fr; min-height: 450px; padding: 16px 4.5% 35px; position: relative; }
+.welcome__copy { padding: 20px 0; position: relative; z-index: 1; }
+.eyebrow, .section-kicker { color: #94647a; font-size: 13px; font-weight: 700; letter-spacing: 1.3px; text-transform: uppercase; }
+.eyebrow { align-items: center; background: #fff; border: 1px solid #f3e6e5; border-radius: 999px; display: inline-flex; gap: 9px; padding: 10px 15px; }
+.eyebrow span { color: #bd9134; font-size: 17px; }
+.welcome h1 { color: var(--color-ciruela); font-family: 'Trebuchet MS', sans-serif; font-size: clamp(42px, 5.15vw, 69px); font-weight: 800; letter-spacing: -3.8px; line-height: 1.08; margin: 27px 0 17px; }
+.welcome h1 span { color: #a86580; }
+.welcome__description { color: #756b7b; font-size: 18px; line-height: 1.7; margin: 0 0 29px; max-width: 430px; }
+.welcome__note { color: #756b7b; font-size: 13px; margin: 17px 0 0 7px; }
+.welcome__art { align-items: center; display: flex; flex-direction: column; justify-content: center; min-height: 360px; position: relative; }
+.art-cloud { background: #e8f3fc; border-radius: 50%; height: 300px; position: absolute; width: 300px; }
+.welcome__art .mascot { position: relative; width: min(100%, 340px); z-index: 1; }
+.art-caption { background: white; border: 1px solid #e8eff5; border-radius: 18px; box-shadow: 0 8px 24px rgb(91 75 107 / 7%); font-size: 16px; font-weight: 700; margin-top: -1px; padding: 13px 21px; position: relative; z-index: 2; }
+.art-spark { color: #c29c3b; position: absolute; }
+.art-spark--one { font-size: 32px; right: 15%; top: 17%; }
+.art-spark--two { color: #a77990; font-size: 27px; left: 10%; top: 37%; }
+.welcome__index { align-items: center; bottom: 22px; color: #756b7b; display: flex; font-size: 12px; gap: 10px; letter-spacing: 1px; position: absolute; right: 6%; }
+.welcome__index i { background: #d7cbd5; height: 1px; width: 31px; }
+.institution { align-items: center; background: #fff; border: 1px solid #f0e9e4; border-radius: 22px; box-shadow: 0 10px 30px rgb(91 75 107 / 4%); display: flex; gap: 17px; margin: 0 4.5%; padding: 20px 23px; }
+.institution__mark { align-items: center; background: #f5e9ef; border-radius: 15px; color: #8b506d; display: flex; flex: 0 0 48px; font-family: 'Trebuchet MS', sans-serif; font-size: 24px; font-weight: 800; height: 48px; justify-content: center; }
+.institution__name { color: var(--color-ciruela); font-size: 15px; font-weight: 700; margin: 0 0 4px; }
+.institution__detail { color: #706777; font-size: 14px; margin: 0; }
+.institution__tag { background: #f9f3e6; border-radius: 999px; color: #75613b; font-size: 12px; font-weight: 700; margin-left: auto; padding: 10px 14px; white-space: nowrap; }
+.team { padding: 62px 4.5% 53px; }
+.team__heading { align-items: end; display: flex; justify-content: space-between; margin-bottom: 22px; }
+.section-kicker { font-size: 11px; margin: 0 0 8px; }
+.team h2 { color: var(--color-ciruela); font-family: 'Trebuchet MS', sans-serif; font-size: 29px; letter-spacing: -1.1px; margin: 0; }
+.team__decoration { color: #b1889e; font-size: 28px; }
+.team__list { display: grid; gap: 12px; grid-template-columns: repeat(5, minmax(0, 1fr)); list-style: none; margin: 0; padding: 0; }
+.team-card { align-items: center; background: #fff; border: 1px solid #f1e9e7; border-radius: 18px; display: flex; flex-direction: column; gap: 14px; justify-content: center; min-height: 157px; padding: 18px 12px; position: relative; text-align: center; transition: transform 180ms ease, box-shadow 180ms ease; }
+.team-card:hover { box-shadow: 0 12px 24px rgb(91 75 107 / 8%); transform: translateY(-3px); }
+.team-card__avatar { align-items: center; border-radius: 50%; color: var(--color-ciruela); display: flex; font-family: 'Trebuchet MS', sans-serif; font-size: 15px; font-weight: 800; height: 49px; justify-content: center; width: 49px; }
+.team-card__avatar--1 { background: #f8dbe6; }
+.team-card__avatar--2 { background: #e6ddf1; }
+.team-card__avatar--3 { background: #dcedf8; }
+.team-card__avatar--4 { background: #e3f2de; }
+.team-card__avatar--5 { background: #f8e9c9; }
+.team-card__name { color: #5B4B6B; font-size: 13px; font-weight: 600; line-height: 1.45; }
+.team-card__spark { color: #a58545; font-size: 11px; position: absolute; right: 14px; top: 13px; }
+.footer { align-items: center; border-top: 1px solid #eee5e1; color: #706777; display: flex; flex-wrap: wrap; font-size: 12px; gap: 9px; justify-content: center; padding: 24px 0 27px; text-align: center; }
+.footer__heart { color: #a55f7b; font-size: 14px; }
+
+@media (max-width: 900px) {
+  .welcome { grid-template-columns: 1fr .8fr; padding-inline: 2%; }
+  .team__list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .institution, .team { margin-inline: 0; padding-inline: 2%; }
+  .brand__logo { width: 124px; }
+}
+
+@media (max-width: 640px) {
+  .topbar { padding: 19px 0; }
+  .brand { gap: 10px; }
+  .brand__logo { width: 96px; }
+  .brand__divider { height: 30px; }
+  .brand__name { font-size: 15px; }
+  .star-counter { min-height: 40px; padding-inline: 12px; }
+  .welcome { grid-template-columns: 1fr; padding: 26px 2% 30px; text-align: center; }
+  .welcome__copy { padding: 10px 0 0; }
+  .welcome h1 { font-size: clamp(40px, 10vw, 57px); letter-spacing: -2.5px; margin: 21px 0 13px; }
+  .welcome__description { font-size: 16px; margin-inline: auto; max-width: 360px; }
+  .welcome__art { min-height: 280px; }
+  .art-cloud { height: 250px; width: 250px; }
+  .welcome__art .mascot { width: min(84%, 290px); }
+  .art-spark--one { right: 15%; top: 7%; }
+  .art-spark--two { left: 13%; top: 31%; }
+  .welcome__index { bottom: 0; right: 5%; }
+  .institution { align-items: flex-start; flex-wrap: wrap; gap: 12px; padding: 16px; }
+  .institution__mark { flex-basis: 42px; height: 42px; }
+  .institution__name { font-size: 13px; }
+  .institution__detail { font-size: 12px; }
+  .institution__tag { margin-left: 54px; }
+  .team { padding-bottom: 40px; padding-top: 45px; }
+  .team__list { gap: 9px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .team-card { min-height: 145px; padding-inline: 8px; }
+  .team-card__name { font-size: 12px; }
+  .footer { line-height: 1.7; }
+}

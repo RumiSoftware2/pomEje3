@@ -1,0 +1,51 @@
+.screen-layout {
+  min-height: 100vh;
+  overflow: hidden;
+  position: relative;
+  background: var(--color-crema);
+}
+
+.screen-layout__content {
+  isolation: isolate;
+  margin: 0 auto;
+  max-width: 1440px;
+  min-height: 100vh;
+  padding: 0 clamp(24px, 7.2vw, 112px);
+  position: relative;
+}
+
+.screen-layout__decor {
+  border-radius: 50%;
+  filter: blur(1px);
+  pointer-events: none;
+  position: absolute;
+}
+
+.screen-layout__decor--left {
+  background: #f9e6d7;
+  height: 230px;
+  left: -145px;
+  opacity: 0.43;
+  top: 305px;
+  width: 230px;
+}
+
+.screen-layout__decor--right {
+  background: #e1eafa;
+  height: 280px;
+  opacity: 0.55;
+  right: -170px;
+  top: 80px;
+  width: 280px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .screen-layout *,
+  .screen-layout *::before,
+  .screen-layout *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

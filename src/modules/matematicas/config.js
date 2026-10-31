@@ -62,11 +62,11 @@ const matematicas = {
         datos: {
           pequenos: {
             titulo: 'Video especial de Matemáticas',
-            url: 'https://www.youtube.com/embed/QkXQ6uSKbwA?si=f24rSCLMEK1vopQC',
+            url: 'https://www.youtube.com/embed/dxPQymu6T4o?si=TMznHUUwmAeo8nHk',
           },
           grandes: {
             titulo: 'Video especial de Matemáticas',
-            url: 'https://www.youtube.com/embed/QkXQ6uSKbwA?si=f24rSCLMEK1vopQC',
+            url: 'https://www.youtube.com/embed/dxPQymu6T4o?si=TMznHUUwmAeo8nHk',
           },
         },
       },
